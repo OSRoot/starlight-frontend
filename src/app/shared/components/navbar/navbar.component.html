@@ -1,0 +1,55 @@
+
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="Logo" class="navbar-logo" (click)="navigateRoot()">
+    <ul [class.show]="isMenuOpen" class="nav-item">
+      <li *ngFor="let item of navbarItems" [class.active]="item.active">
+        <a [routerLink]="[item.link]" (click)="setActive(item)">{{ item.label }}</a>
+      </li>
+    </ul>
+    <div></div>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <!-- <div class="bar"></div> -->
+    </div>
+  </nav>
+  
+
+
+     <!-- <div class="header animate__animated animate__fadeIn">
+       
+       <div class="logo">
+         <img src="assets/logo.png" alt="Logo" class="navbar-logo">
+        </div>
+        
+        <div class="navlinks-menu">
+          
+          <div class="nav-links">
+            <div class="nav-item" routerLink="/home"  [ngClass]="{ 'active': isActive('/home') }" >
+              <span>Home</span>
+            </div>
+            
+            <div class="nav-item" routerLink="about-us"  [ngClass]="{ 'active': isActive('/about-us') }" >
+              <span>About Us</span>
+            </div>
+            
+            <div class="nav-item" [ngClass]="{ 'active': isActive('/products') }"  routerLink="/products" >
+              <span>Products</span>
+            </div>
+
+            <div class="nav-item" [ngClass]="{ 'active': isActive('/events') }"  routerLink="/events" >
+              <span>Events</span>
+            </div>
+        
+            <div class="nav-item" routerLink="/contact-us" [ngClass]="{ 'active': isActive('/contact-us') }" >
+              <span>Contact Us</span>
+            </div>
+      </div>
+      <div class="menu" (click)="openMenu()">
+        <span>Menu</span>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+      
+    </div>
+  </div> -->

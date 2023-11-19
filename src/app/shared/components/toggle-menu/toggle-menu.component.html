@@ -1,0 +1,26 @@
+<div class="menu animate__animated animate__fadeIn fast" [ngClass]="{'closing':isClosing}">
+  <div  class="menu-links animate__animated animate__fadeInDown fast" >
+    <div class="close" (click)="close()">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="nav-item" routerLink="/home"  [ngClass]="{ 'active': isActive('/home') }" >
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <span>Home</span>
+      </div>
+
+      <div class="nav-item" routerLink="about-us"  [ngClass]="{ 'active': isActive('/about-us') }" >
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <span>About Us</span>
+      </div>
+
+      <div class="nav-item" [ngClass]="{ 'active': isActive('/products') }"  routerLink="/products" >
+        <i class="fa fa-th" aria-hidden="true"></i>
+        <span>Products</span>
+      </div>
+      
+      <div class="nav-item" routerLink="/contact-us" [ngClass]="{ 'active': isActive('/contact-us') }" >
+        <i class="fa fa-phone" aria-hidden="true"></i>
+        <span>Contact Us</span>
+      </div>
+    </div>
+  </div>
