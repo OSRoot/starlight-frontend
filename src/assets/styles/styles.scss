@@ -29,8 +29,15 @@ body { margin: 0; font-family:"regular" !important;background: $background-color
   // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: $background-color;
 color: $primary-color;}
 
-
+body::-webkit-scrollbar{}
 // .main-content{
 //   animation: fadin;
 //   animation-duration: 2s;
 // }
+.mat-mdc-tab-body-wrapper::-webkit-scrollbar{
+  display: none !important;
+
+}
+.mat-mdc-tab-body::-webkit-scrollbar{
+  display: none !important;
+}

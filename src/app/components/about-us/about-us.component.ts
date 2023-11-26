@@ -16,10 +16,13 @@ export class AboutUsComponent implements OnInit{
     private meta:MetaService
   ) { }
   ngOnInit() {
-
     this.actRoute.data.subscribe(data => {
        this.allInfo=data['routeResolver']
-    });
+    },
+    err=>{
+
+    }
+    );
 
     this.meta.setAboutUsMeta()
   }

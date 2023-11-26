@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -18,7 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -27,7 +26,6 @@ import { BlogCardComponent } from './shared/components/blog-card/blog-card.compo
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ToggleMenuComponent } from './shared/components/toggle-menu/toggle-menu.component';
-
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { TruncatePipe } from './pipes/truncate/truncate.pipe';
@@ -49,7 +47,6 @@ import { TruncatePipe } from './pipes/truncate/truncate.pipe';
     BlogCardComponent,
     ToggleMenuComponent,
     SpinnerComponent,
-    
   ],
   imports: [
     BrowserModule.withServerTransition({appId:''}),

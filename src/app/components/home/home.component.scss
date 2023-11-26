@@ -243,3 +243,7 @@ mat-tab-body::-webkit-scrollbar{
 }
 
 webkit-scrollbar{}
+
+mat-tab-group::-webkit-scrollbar{
+  display: none;
+}
