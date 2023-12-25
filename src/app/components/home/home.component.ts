@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { Home } from 'src/app/_interfaces/home';
 import { HomeService } from 'src/app/_services/home.service';
+import { DataService } from 'src/app/shared/components/services/data/data.service';
 import { LoaderService } from 'src/app/shared/components/services/loader/loader.service';
 import { MetaService } from 'src/app/shared/components/services/meta/meta.service';
 
@@ -16,32 +17,29 @@ export class HomeComponent implements OnInit {
   isLoading:boolean = false;
   altText:string = "Starlight International trading company شركه ستارلايت للتجارة الدولية";
   // staticTags:
-  home!: Home ;
+  home: any ;
+  categories:any;
+  categories_products:any;
+  events:any;
+  header:any;
+  meta_tags:any;
+  products:any
+  displayedProducts: any;
   constructor(
-    private actRoute: ActivatedRoute,
     private meta:MetaService,
-    private loader:LoaderService
+    private data:DataService
   ) { }
   ngOnInit() {
-    this.actRoute.data.subscribe(data => {
-      console.log('Check route resolver data')
-       this.home=data['routeResolver'];
-       console.log('====================================');
-       console.log(this.home.categories);
-       console.log('====================================');
-    })
-    // Set the Title manually
-    this.meta.setHomeMeta();
-    this.loader.loading.subscribe(
-      loader => this.isLoading = loader
-    )
+
+    this.getHomeData( )
+
   }
 
-  slideConfig = { 
+  slideConfig = {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000, 
+    autoplaySpeed: 1000,
     // centerMode: true,
     // centerPadding: '30px',
     arrows: true,
@@ -59,6 +57,28 @@ export class HomeComponent implements OnInit {
     ],};
 
 
-    
+getHomeData():void{
+      this.data.getData('/content/home').subscribe(
+        res=>{
+          this.home=res.data;
+          this.categories = res.data.categories;
+          this.categories_products = res.data.categories_products;
+          this.events = res.data.events;
+          this.header = res.data.header;
+          this.meta_tags = res.data.meta_tags;
+          this.meta.setMeta(this.meta_tags)
+          this.displayedProducts = this.categories_products[0].products;
+        }
 
+      )
 }
+
+onSelectionChange(event?: any) {
+  for (let productCat of this.categories_products) {
+    if (productCat.name === event.tab?.textLabel) {
+      this.displayedProducts = productCat.products;
+      return; // Exit the loop once the matching category is found
+    }
+  }
+}
+  }

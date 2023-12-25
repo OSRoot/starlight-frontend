@@ -4,4 +4,3 @@ export const environment = {
     apiUrl: 'https://admin.starlight-ae.com/api'
 
   };
-  

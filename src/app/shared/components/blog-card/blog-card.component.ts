@@ -8,7 +8,7 @@ import { Home,Event } from 'src/app/_interfaces/home';
   styleUrls: ['./blog-card.component.scss']
 })
 export class BlogCardComponent {
-  @Input() data!: Event[];
+  @Input() data!:any[];
 
   constructor(private router:Router){}
 

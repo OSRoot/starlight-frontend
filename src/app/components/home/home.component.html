@@ -1,23 +1,24 @@
 <div class="cover">
   <div class="cover-content">
     <h2 class="te">Welcome to Our Website</h2>
-    <p > {{home.header.desc}} </p>
+    <p> {{header?.desc}} </p>
           <div class="button"><button class="cta-button" ><a routerLink="/about-us">Learn More </a><i class="fa-solid fa-chevron-right"></i></button></div>
   </div>
 </div>
 
 <div class="main-content animate__animated animate__fadeIn">
-  
+
 <div class="container test_ " >
   <h1>Top Products</h1>
 
-  <mat-tab-group style="-ms-overflow-style: none; scrollbar-width: none">
-    
-      <mat-tab *ngFor="let cat of home.categories_products" label="{{cat.name}}" >
+  <mat-tab-group style="-ms-overflow-style: none; scrollbar-width: none" (selectedTabChange)="onSelectionChange($event)">
+      <mat-tab *ngFor="let cat of categories"
+      label="{{cat?.name}}"
+      >
           <div class="card-row">
-              <app-product-card *ngFor="let prod of cat.products" [data]="prod" ></app-product-card>
+              <app-product-card *ngFor="let prod of displayedProducts" [data]="prod" ></app-product-card>
           </div>
-          
+
       </mat-tab>
 
     </mat-tab-group>
@@ -25,12 +26,12 @@
 
 <div class="container test_" >
   <div class="header-slider" ><h1>Other Categories</h1></div>
-  <ngx-slick-carousel class="carousel" 
-    #slickModal="slick-carousel" 
+  <ngx-slick-carousel class="carousel"
+    #slickModal="slick-carousel"
     [config]="slideConfig">
-    
-  <div ngxSlickItem *ngFor="let slide of home.categories" class="slide">
-  <img style="cursor: pointer;" src="{{ slide.image_url}}" routerLink="/products/{{slide.name}}" [queryParams]="{ id: slide.id }"  [alt]="altText" width="100%">
+
+  <div ngxSlickItem *ngFor="let cat of home?.categories" class="slide">
+  <img style="cursor: pointer;" [src]="cat.images[0]?.url" routerLink="/products" [queryParams]="{ title:'', category_Id: cat.id }"  [alt]="altText" width="100%">
   </div>
   </ngx-slick-carousel>
 </div>
@@ -42,7 +43,7 @@
   <button class="cta-button"><a routerLink="/events">Learn More </a> <i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
-    <app-blog-card [data]="home.events"></app-blog-card>
+    <app-blog-card [data]="home?.events"></app-blog-card>
 
 </div>
 
@@ -55,7 +56,7 @@
       <h1 class="d-block">Trusted Company our starLight </h1>
       <p>keep the star light the first choise light the first choi</p>
     </div>
-    
+
     <button class="cta-button externalEdite"><a routerLink="/contact-us">Contact Us </a> <i class="fa-solid fa-chevron-right"></i></button>
   </div>
 </div>

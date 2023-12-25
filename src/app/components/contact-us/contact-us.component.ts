@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Info } from 'src/app/_interfaces/aboutus';
 import { ContactusService } from 'src/app/_services/contactus.service';
+import { DataService } from 'src/app/shared/components/services/data/data.service';
 import { LoaderService } from 'src/app/shared/components/services/loader/loader.service';
 import { MetaService } from 'src/app/shared/components/services/meta/meta.service';
 
@@ -16,20 +17,28 @@ export class ContactUsComponent {
   altText:string = ' Starlight International trading company events أحداث وفعاليات شركة ستارلايت للتجارة الدولية'
   myForm!: FormGroup;
   info:Info ={address:'',phone:'',email:''};
+  contactus:any;
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private contactService:ContactusService,
     private toastr: ToastrService,
     private meta:MetaService,
-    private loader:LoaderService
-    ) {}
+    private loader:LoaderService,
+    private data:DataService
+    ) {
+      this.createForm()
+    }
 
 
   ngAfterViewInit(){
-   
+
   }
 
   ngOnInit() {
+    this.getContactUS()
+  }
+
+  createForm(){
     this.myForm = this.fb.group({
       first_name: ['', Validators.required],
       second_name: ['', Validators.required],
@@ -37,10 +46,16 @@ export class ContactUsComponent {
       phone: ['', Validators.required],
       message: ['', Validators.required]
     });
-   
-    this.meta.setContactUsMeta()
-  }
 
+  }
+getContactUS(){
+  this.data.getData('/content/contact').subscribe(
+      res=>{
+        this.contactus = res.data;
+        this.meta.setMeta(this.contactus?.meta_tags)
+      }
+  )
+}
   onSubmit() {
     if (this.myForm.valid) {
       console.log('Form submitted:', this.myForm.value);

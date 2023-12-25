@@ -10,12 +10,11 @@ export const productsResolver: ResolveFn<AllProducts> = (
   state: RouterStateSnapshot,
   productService: ProductsService = inject(ProductsService)
 ): Observable<AllProducts> => {
-  const queryParams = route.queryParams['id'] || '';
-
+  const queryParams = route.queryParams['category_Id'] || '';
   // Access specific query parameter
     return productService.allProducts('',queryParams).pipe(
       catchError((err) => {
-        throw err; 
+        throw err;
       })
     );
 };
