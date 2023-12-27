@@ -30,7 +30,7 @@
     #slickModal="slick-carousel"
     [config]="slideConfig">
 
-  <div ngxSlickItem *ngFor="let cat of home?.categories" class="slide">
+  <div ngxSlickItem *ngFor="let cat of displayedProducts" class="slide">
   <img style="cursor: pointer;" [src]="cat.images[0]?.url" routerLink="/products" [queryParams]="{ title:'', category_Id: cat.id }"  [alt]="altText" width="100%">
   </div>
   </ngx-slick-carousel>

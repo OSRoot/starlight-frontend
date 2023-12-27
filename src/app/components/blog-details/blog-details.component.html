@@ -3,8 +3,8 @@
 <div class="container my-5 animate__animated animate__fadeIn" >
     <h1 class="os-event-title">{{blog.title}}</h1>
 
-           <p class="os-event-paragraph">
-     {{blog.description}}
+           <p class="os-event-paragraph" [innerHTML]="blog.description">
+     <!-- {{blog.description}} -->
         </p>
            <div class="row mt-5">
                 <div class="col-md-4 col-6 my-1"><img class="imageInside" width="100%" src="{{blog.image_link}}" alt=""></div>
