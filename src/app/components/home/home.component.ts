@@ -64,6 +64,8 @@ getHomeData():void{
           this.categories = res.data.categories;
           this.categories_products = res.data.categories_products;
           this.events = res.data.events;
+          console.log(res.data.events);
+
           this.header = res.data.header;
           this.meta_tags = res.data.meta_tags;
           this.meta.setMeta(this.meta_tags)
