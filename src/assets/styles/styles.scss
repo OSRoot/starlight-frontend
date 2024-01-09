@@ -20,7 +20,7 @@ body, ul, li {
     color: $primary-color;
   }
 
-html, body { height: 100%; 
+html, body { height: 100%;
   background: #F7F8FB !important;
   scroll-behavior: smooth;
   // margin-top: 80px;
@@ -40,4 +40,15 @@ body::-webkit-scrollbar{}
 }
 .mat-mdc-tab-body::-webkit-scrollbar{
   display: none !important;
+}
+
+p{
+  margin-bottom: 0 !important;
+}
+
+.contOther{
+  margin-top: 0 !important;
+}
+.contTop{
+  margin-bottom: 0 !important;
 }

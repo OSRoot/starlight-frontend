@@ -9,7 +9,6 @@ import { Home,Event } from 'src/app/_interfaces/home';
 })
 export class BlogCardComponent {
   @Input() data!:any[];
-
   constructor(private router:Router){}
 
   navigate(id:any){

@@ -12,6 +12,7 @@ import { MetaService } from 'src/app/shared/components/services/meta/meta.servic
 export class BlogDetailsComponent implements OnInit{
   blogDetails!:Event;
   event_id!:any;
+  showlist=false
   blog:any;
   constructor(
     private actRoute: ActivatedRoute,

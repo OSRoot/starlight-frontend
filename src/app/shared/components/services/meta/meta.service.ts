@@ -32,7 +32,7 @@ export class MetaService {
 
   initialTags() {
     this.meta.addTags(this.defaultTags);
-    this.setTitle('Starlight - Elkenany');
+    this.setTitle('Starlight');
   }
 
   setMetaTags(tags:MetaDefinition[]){
@@ -40,8 +40,8 @@ export class MetaService {
   };
 // For pages like product details
 setMetaInformationForPage(product?:Product , meta?:any) :void{
-  const title = product? `${product.id}: ${product.title}`:`Starlight - Elkenany`;
-  const description = product ? `Details of ${product.id}: ${product.title}`:`Starlight - Elkenany`;
+  const title = product? `${product.id}: ${product.title}`:`Starlight`;
+  const description = product ? `Details of ${product.id}: ${product.title}`:`Starlight`;
   const image = product ? product.images_url[0]:'';
   const keywords = product? `${product.id}: ${product.title}, ${product.meta_title || product.title}, ${product.social_title||product.title}`:``;
   const url = product? ``:``;

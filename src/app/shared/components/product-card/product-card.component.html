@@ -5,7 +5,9 @@
     </div>
     <div class="card-content">
       <h2 class="card-title h2Class">{{data?.title || data?.name}}</h2>
-      <p class="card-description" [innerHTML]="data?.description ? (data.description | truncate:50) : ''"></p>
+      <span style="margin-bottom: 0; display: inline-block;" class="card-description"> {{data.short_description | truncate:45}} </span><span style="color: rgba(0, 0, 255, 0.545);margin-top: 0; display: inline-block;">Read more</span>
     </div>
+
+
 </div>
 </a>

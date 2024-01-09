@@ -8,12 +8,12 @@
 
 <div class="main-content animate__animated animate__fadeIn">
 
-<div class="container test_ " >
+<div class="container contTop test_ " >
   <h1>Top Products</h1>
 
   <mat-tab-group style="-ms-overflow-style: none; scrollbar-width: none" (selectedTabChange)="onSelectionChange($event)">
       <mat-tab *ngFor="let cat of categories"
-      label="{{cat?.name}}"
+      [label]="cat?.name"
       >
           <div class="card-row">
               <app-product-card *ngFor="let prod of displayedProducts" [data]="prod" ></app-product-card>
@@ -24,7 +24,7 @@
     </mat-tab-group>
 </div>
 
-<div class="container test_" >
+<div class="container contOther test_" >
   <div class="header-slider" ><h1>Other Categories</h1></div>
   <ngx-slick-carousel class="carousel"
     #slickModal="slick-carousel"

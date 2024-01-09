@@ -4,9 +4,10 @@
 /* Cover Styles */
 
 .cover {
-    background-image: url('https://admin.starlight-ae.com/images/content/1697982390image.jpg');
+    background-image: url('../../../assets/rahma-hand.jpg');
     background-size: cover;
     background-position: center;
+    background-color: #eee;
     min-height: 600px;
     position: relative;
     z-index: 1; /* Ensure the cover is above other elements */
@@ -30,7 +31,7 @@
     }
  }
 
-//   .cover h1{ 
+//   .cover h1{
 // font-size: 10px;
 
 //  }
@@ -38,7 +39,7 @@
 //    margin: 80px 0px;
 
 // }
-  
+
   .cover p {
     font-size: 16px;
 
@@ -50,12 +51,12 @@
       max-width: 100%;;
     }
   }
-  
+
   .button {
     text-align: start;
     max-width: 75%;
   }
-  
+
   .cta-button {
     background-color: $primary-color;
     box-shadow: 20px 20px 60px #00000066;
@@ -69,7 +70,7 @@
     height: 50px;
 
   }
-  .externalEdite{ 
+  .externalEdite{
 
     margin-top:1rem;
     margin-bottom: 0.5rem;
@@ -79,11 +80,11 @@
   }
 
   //////////////////////
-  /// 
-  /// 
-  /// 
-  /// 
-  /// 
+  ///
+  ///
+  ///
+  ///
+  ///
   .card-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -105,15 +106,15 @@
       padding: 20px; /* Add some padding to the cover content */
       transform: none;
     }
-    
+
     .cover p {
       font-size: 18px;
     }
-    
+
     .card-row {
       margin: 15px 0;
     }
-   
+
   }
 
   .te{
@@ -151,22 +152,22 @@ a{
 
 
 .header-slider{
-  // width: 80%; 
+  // width: 80%;
   margin: auto;
 
   @media (max-width: 768px) {
-  width: 96%; 
+  width: 96%;
   }
 
   @media (min-width: 768px) {
     h1{
       transform: translate(0, 130%)!important;
-    }    
-  
+    }
+
   }
 }
 
-*::-webkit-scrollbar { 
+*::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 .header-container{
@@ -187,7 +188,7 @@ mat-tab-body::-webkit-scrollbar{
 
 
 ///////////////////////////contact-us
-/// 
+///
 
 .contact-container {
   position: relative;
@@ -199,11 +200,10 @@ mat-tab-body::-webkit-scrollbar{
   min-height: 400px;
   position: relative;
   z-index: 1; /* Ensure the cover is above other elements */
-  margin-bottom: 10rem;
-  margin-top: 10rem;
+  // margin-bottom: 10rem;
+  // margin-top: 10rem;
   display: flex;
   align-items: center;
-
 }
 
 .test_{
@@ -222,7 +222,7 @@ mat-tab-body::-webkit-scrollbar{
   // top: 20%; /* Adjust as needed */
   // left: 30;
   // margin-bottom: 20rem;
-  // 
+  //
   // display: flex;
 
   justify-content: space-around;
