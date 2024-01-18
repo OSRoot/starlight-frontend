@@ -1,18 +1,22 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AllProducts } from 'src/app/_interfaces/product';
 import { ProductsService } from 'src/app/_services/products.service';
+import { Pages } from 'src/app/core/page';
 import { DataService } from 'src/app/shared/components/services/data/data.service';
 import { MetaService } from 'src/app/shared/components/services/meta/meta.service';
+import { RefreshWatcherService } from 'src/app/shared/components/services/refresher/refresh.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   altText:string = ' Starlight International trading company products منتجات شركة ستارلايت للتجارة الدولية';
+  subscription:Subscription|undefined
   allProducts!: AllProducts ;
   newCategory = {
     "id": '',
@@ -25,18 +29,34 @@ export class ProductsComponent implements OnInit {
     selectedValue :any = '';
     categories:any
   searchTerm: string = '';
+  id=''
   products:any[]=[];
   constructor(
     @Inject(PLATFORM_ID) private platform:object,
     private actRoute: ActivatedRoute, private productService:ProductsService, private meta:MetaService,
-    private data:DataService
-  ) { }
+    private data:DataService,
+    private refresh:RefreshWatcherService
+    ) { }
   ngOnInit() {
+    this.subscription = this.refresh.refreshObservable.subscribe(
+      page=>{
+        if (page===Pages.Products)
+        {
+          setTimeout(() => {
+            this.getProducts()
+
+            }, 0);
+        }
+      }
+    )
     this.category_Id = this.actRoute.queryParams.subscribe(
       params=>{
-        this.category_Id = params['category_Id']  as string;
-        console.log(this.category_Id);
-
+        if (params['category_Id']){
+          this.selectedValue= params['category_Id'];
+        }
+       else {
+        this.selectedValue = this.getDefaultCategoryId();
+       }
       }
     )
     this.getProducts( );
@@ -51,8 +71,9 @@ export class ProductsComponent implements OnInit {
     //    this.allProducts=data['routeResolver']
     //    this.allProducts.categories.unshift(this.newCategory)
     // })
-
+      this.id = this.actRoute.snapshot.paramMap.get('category_Id') as string;
     // enable Meta information
+      this.selectedValue = this.id
 
   }
 
@@ -105,5 +126,15 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
+
+
+ ngOnDestroy(): void {
+    if (this.subscription) this.subscription.unsubscribe();
+ }
+  // 9/
+  getDefaultCategoryId(): any {
+    return this.categories.length > 0 ? this.categories[0].id : null;
+  }
+
 }
 

@@ -10,7 +10,7 @@
            </p>
             <!-- <img width="100%" src="{{prodDetails.images_url}}" alt=""> -->
             <div class="row mt-5">
-                <div *ngFor="let image of product.images" class="col-md-4 col-6 my-1 ">
+                <div *ngFor="let image of product?.images" class="col-md-4 col-6 my-1 ">
                     <img [src]="image?.url" [alt]="image?.alt"  class="imageInSideProudect" height="150px" width="100%" >
                 </div>
            </div>
@@ -19,7 +19,7 @@
         <div class="col-8 mt-5 mt-lg-0 m-auto col-lg-3 form-container">
 
             <h2 class="text-center py-2">Get in touch</h2>
-            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="myForm" >
                 <input class="form-control" type="text" id="name" formControlName="name" placeholder="Your name">
 
                 <input class="form-control" type="text" id="email" formControlName="email" placeholder="Your email">
@@ -30,7 +30,7 @@
 
                 <textarea class="form-control" id="message" formControlName="message" placeholder="Your message"></textarea>
 
-                <button class="form-control submit" type="submit">Submit</button>
+                <button class="form-control submit" type="submit" (click)="onSubmit(product?.id)">Submit</button>
               </form>
 
 

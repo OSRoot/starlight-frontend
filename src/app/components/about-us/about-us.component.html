@@ -15,8 +15,8 @@
         <img class="cover" src="assets/ff.png" [alt]="altText">
 
         <h1>Who We are?</h1>
-        <p class="who">
-            {{whoweare?.desc}}
+        <p [innerHTML]="whoweare?.desc">
+
         </p>
 
 
@@ -32,7 +32,7 @@
 
             <div class="overflow-box">
                 <h2>Our Vision</h2>
-                <p>{{ourvision?.desc}}</p>
+                <p [innerHTML]="ourvision?.desc"></p>
             </div>
           </div>
 
@@ -44,7 +44,7 @@
 
             <div class="overflow-box">
                 <h2>Our Mision</h2>
-                <p>{{ourmission?.desc}}</p>
+                <p  [innerHTML]="ourmission?.desc"></p>
             </div>
           </div>
 
@@ -57,7 +57,7 @@
 
                 <div class="overflow-box">
                   <h2>Objectives</h2>
-                  <p>{{objectives?.desc}}</p>
+                  <p [innerHTML]="objectives?.desc"></p>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
 
                 <div class="overflow-box">
                     <h2>SUSTAINABILITY</h2>
-                    <p>{{sustainability?.desc}}</p>
+                    <p  [innerHTML]="sustainability?.desc"></p>
                 </div>
               </div>
 

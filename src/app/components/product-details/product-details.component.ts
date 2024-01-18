@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit{
       private meta:MetaService,
      private data:DataService
     ) {
-      // this.createForm()
+      this.createForm()
     }
 
 
@@ -38,7 +38,7 @@ export class ProductDetailsComponent implements OnInit{
       name: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
-      product_id: [this.prodDetails.id, Validators.required],
+      product_id: [this.prodDetails?.id, Validators.required],
       message: ['', Validators.required]
     });
 
@@ -52,21 +52,23 @@ export class ProductDetailsComponent implements OnInit{
       }
     )
   }
-  onSubmit() {
-    // if (this.myForm.valid) {
-    //   console.log('Form submitted:', this.myForm.value);
-    //   this.productservice.order(this.myForm.value).subscribe(
-    //     res=>{
-    //       this.toastr.success(res.message, 'Success');
-    //     },
-    //     err=>{
-    //       this.toastr.error(err.error.message, 'Error');
+  onSubmit(id:any) {
 
-    //     }
-    //   )
+    this.myForm.patchValue({
+      product_id:id
+    })
+    console.log(this.myForm.value);
 
-    // }else{
-    //    this.toastr.error('All feild is required to send the message', 'Error');
-    // }
+    if (this.myForm.invalid) {
+      this.toastr.error('All feild is required to send the message');
+      return
+    }
+   if (this.myForm.valid) {
+     this.data.postData('/order/store', this.myForm.value).subscribe(
+       res => {
+         this.toastr.success(res.message);
+       }
+     )
+   }
   }
 }

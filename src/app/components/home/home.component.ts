@@ -25,13 +25,13 @@ export class HomeComponent implements OnInit {
   meta_tags:any;
   products:any
   displayedProducts: any;
+  title=''
   constructor(
     private meta:MetaService,
-    private data:DataService
+    private data:DataService,
   ) { }
   ngOnInit() {
-
-    this.getHomeData( )
+    this.getHomeData();
 
   }
 
@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
 getHomeData():void{
       this.data.getData('/content/home').subscribe(
         res=>{
+          this.title=res.data.header.title;
           this.home=res.data;
           this.categories = res.data.categories;
           this.categories_products = res.data.categories_products;
@@ -83,4 +84,7 @@ onSelectionChange(event?: any) {
     }
   }
 }
+
+
+
 }

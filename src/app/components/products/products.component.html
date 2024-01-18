@@ -19,12 +19,11 @@
                 </li>
 
                 <li>
-                    <mat-radio-group [(ngModel)]="selectedValue" (change)="onSelectionChange()">
-                        <mat-radio-button class="d-block" *ngFor="let cat of categories" [value]="cat.id">
-                         <li class="filter">{{ cat.name }}</li>
-                        </mat-radio-button>
-                      </mat-radio-group>
-
+                  <mat-radio-group [(ngModel)]="selectedValue" (change)="onSelectionChange()">
+                    <mat-radio-button class="d-block" *ngFor="let cat of categories" [value]="cat.id">
+                      <li class="filter">{{ cat.name }}</li>
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </li>
 
             </ul>

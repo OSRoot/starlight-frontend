@@ -65,7 +65,6 @@ getContactUS(){
         },
         err=>{
           this.toastr.error(err.error.message, 'Error');
-
         }
       )
 

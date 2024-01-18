@@ -1,7 +1,7 @@
 <div class="cover">
   <div class="cover-content">
-    <h2 class="te">Welcome to Our Website</h2>
-    <p> {{header?.desc}} </p>
+    <h2 class="te">{{title}}</h2>
+    <p [innerHTML]="header?.desc"> </p>
           <div class="button"><button class="cta-button" ><a routerLink="/about-us">Learn More </a><i class="fa-solid fa-chevron-right"></i></button></div>
   </div>
 </div>
@@ -11,16 +11,13 @@
 <div class="container contTop test_ " >
   <h1>Top Products</h1>
 
-  <mat-tab-group style="-ms-overflow-style: none; scrollbar-width: none" (selectedTabChange)="onSelectionChange($event)">
-      <mat-tab *ngFor="let cat of categories"
-      [label]="cat?.name"
-      >
+  <mat-tab-group style="-ms-overflow-style: none; scrollbar-width: none"  (selectedTabChange)="onSelectionChange($event)">
+      <mat-tab *ngFor="let cat of categories; let i=index"
+      [label]="cat?.name">
           <div class="card-row">
               <app-product-card *ngFor="let prod of displayedProducts" [data]="prod" ></app-product-card>
           </div>
-
       </mat-tab>
-
     </mat-tab-group>
 </div>
 
